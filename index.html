@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alya Ghaitsa Salsabila | Personal Branding</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #0b0b0d;
+            --accent-color: #e0aaff; 
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Sidebar Navigasi */
+        .side-nav {
+            width: 80px;
+            height: 100vh;
+            background: var(--glass);
+            border-right: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 0;
+            position: fixed;
+            z-index: 100;
+        }
+
+        .nav-logo { font-weight: 800; font-size: 1.5rem; color: var(--accent-color); }
+        .nav-menu { display: flex; flex-direction: column; gap: 2rem; }
+        .nav-menu a { color: var(--text-secondary); font-size: 1.2rem; transition: 0.3s; text-decoration: none; }
+        .nav-menu a:hover { color: var(--accent-color); transform: scale(1.2); }
+
+        .content { margin-left: 80px; padding: 0 5%; }
+
+        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 80px 0; }
+
+        /* Hero Section */
+        .hero-section { flex-direction: row; justify-content: space-between; align-items: center; }
+        .hero-text { max-width: 600px; }
+        .greeting { color: var(--accent-color); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
+        .name { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin: 1rem 0; }
+        .name span { color: transparent; -webkit-text-stroke: 1px var(--accent-color); }
+        .tagline { font-family: 'Playfair Display', serif; font-style: italic; color: var(--text-secondary); font-size: 1.3rem; margin-bottom: 2rem; }
+
+        .hero-btns { display: flex; align-items: center; gap: 2rem; }
+        .btn-primary { padding: 1rem 2rem; background: var(--accent-color); color: #0b0b0d; text-decoration: none; font-weight: 700; border-radius: 12px; transition: 0.3s; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(224, 170, 255, 0.2); }
+        .social-links { display: flex; gap: 1.5rem; font-size: 1.3rem; }
+        .social-links a { color: var(--text-secondary); transition: 0.3s; }
+        .social-links a:hover { color: var(--accent-color); }
+
+        /* Foto Animasi Blob */
+        .blob-frame {
+            width: 380px; height: 380px;
+            background: var(--accent-color);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            overflow: hidden;
+            animation: morph 8s ease-in-out infinite;
+            border: 5px solid var(--glass);
+        }
+        .blob-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        .title { font-size: 2.5rem; margin-bottom: 3rem; position: relative; font-weight: 800; }
+        .title::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 60px; height: 4px; background: var(--accent-color); }
+
+        /* Kartu Pendidikan */
+        .edu-card { background: var(--glass); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 3rem; }
+        .edu-info { margin-bottom: 2rem; }
+        .edu-info h3 { font-size: 1.5rem; margin: 0.5rem 0; }
+        .edu-year { color: var(--accent-color); font-weight: 600; font-size: 0.9rem; }
+        .edu-info p { color: var(--text-secondary); }
+
+        /* Bento Grid Proyek */
+        .project-bento { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 250px 250px; gap: 1.5rem; }
+        .bento-box { 
+            background: var(--glass); border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 24px; padding: 2rem; display: flex; flex-direction: column; 
+            justify-content: flex-end; transition: 0.4s; cursor: pointer;
+            position: relative; overflow: hidden;
+        }
+        .bento-content { position: relative; z-index: 2; }
+        .bento-content span { font-size: 0.8rem; color: var(--accent-color); font-weight: 600; text-transform: uppercase; }
+        .bento-box:hover { border-color: var(--accent-color); transform: translateY(-5px); }
+        .large { grid-row: span 2; background: linear-gradient(45deg, #1a1a1d, #0b0b0d); }
+
+        /* Skill Chips */
+        .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .skill-item { background: var(--glass); padding: 2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .skill-item h4 { color: var(--accent-color); margin-bottom: 1rem; text-transform: uppercase; font-size: 0.9rem; }
+
+        footer { padding: 4rem 0; text-align: center; border-top: 1px solid var(--glass); color: var(--text-secondary); }
+
+        @media (max-width: 992px) {
+            .hero-section { flex-direction: column-reverse; text-align: center; gap: 4rem; padding-top: 120px; }
+            .side-nav { bottom: 0; width: 100%; height: 70px; flex-direction: row; padding: 0 2rem; border-right: none; position: fixed; top: auto; }
+            .content { margin-left: 0; padding: 0 1.5rem; }
+            .name { font-size: 2.8rem; }
+            .blob-frame { width: 280px; height: 280px; }
+            .project-bento { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="side-nav">
+        <div class="nav-logo">AGS<span>.</span></div>
+        <div class="nav-menu">
+            <a href="#home"><i class="fa-solid fa-house"></i></a>
+            <a href="#about"><i class="fa-solid fa-user-graduate"></i></a>
+            <a href="#projects"><i class="fa-solid fa-briefcase"></i></a>
+            <a href="#skills"><i class="fa-solid fa-wand-magic-sparkles"></i></a>
+        </div>
+        <div style="font-size: 0.7rem; opacity: 0.4;">2026</div>
+    </nav>
+
+    <main class="content">
+        
+        <section id="home" class="hero-section">
+            <div class="hero-text">
+                <span class="greeting">Student of Software Engineering</span>
+                <h1 class="name">Alya Ghaitsa <br><span>Salsabila</span></h1>
+                <p class="tagline">"Membangun solusi digital dengan ketelitian dan kreativitas."</p>
+                
+                <div class="hero-btns">
+                    <a href="mailto:alyaghaitsa07@gmail.com" class="btn-primary">Hubungi Saya</a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/alya-ghaitsa-salsabila-5a51902aa" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/alyaghaitsa" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.instagram.com/alyaghtsa?igsh=MTZudXAwNnc0ejRsaw==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
+                    📍 Batam, Belian, Kepulauan Riau
+                </p>
+            </div>
+
+            <div class="hero-image">
+                <div class="blob-frame">
+                    <img src="foto/me.jpeg" alt="Alya Ghaitsa Salsabila">
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2 class="title">Riwayat Pendidikan</h2>
+            <div class="edu-card">
+                <div class="edu-info">
+                    <span class="edu-year">2025 - Sekarang</span>
+                    <h3>Politeknik Negeri Batam</h3>
+                    <p>D4 Teknologi Rekayasa Perangkat Lunak (TRPL)</p>
+                </div>
+                <div style="height: 1px; background: rgba(255,255,255,0.1); margin: 2rem 0;"></div>
+                <div class="edu-info">
+                    <span class="edu-year">2022 - 2025</span>
+                    <h3>SMK Negeri 7 Batam</h3>
+                    <p>Pengembangan Perangkat Lunak & Gim (PPLG)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="title">Proyek Pilihan</h2>
+            <div class="project-bento">
+                <div class="bento-box large">
+                    <div class="bento-content">
+                        <span>PBL Project - Semester 1</span>
+                        <h3>TREE</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 10px; line-height: 1.5;">
+                            Technology Ronda Efektif dan Efisien (TREE) adalah aplikasi pengelolaan keamanan lingkungan. Aplikasi ini memudahkan penjadwalan ronda otomatis, pembagian tugas yang adil, serta pelaporan kejadian digital agar lebih terorganisir.
+                        </p>
+                    </div>
+                </div>
+                <div class="bento-box">
+                    <div class="bento-content">
+                        <span>Development</span>
+                        <h3>Personal Branding</h3>
+                        <p style="font-size: 0.75rem; color: var(--text-secondary);">Web portfolio responsif menggunakan HTML & CSS.</p>
+                    </div>
+                </div>
+                <div class="bento-box">
+                    <div class="bento-content">
+                        <span>Design</span>
+                        <h3>UI/UX Explore</h3>
+                        <p style="font-size: 0.75rem; color: var(--text-secondary);">Eksplorasi antarmuka modern di Figma.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="title">Skillset</h2>
+            <div class="skill-grid">
+                <div class="skill-item">
+                    <h4>Programming</h4>
+                    <p>HTML, CSS, JavaScript, PHP, SQL, Laravel Framework</p>
+                </div>
+                <div class="skill-item">
+                    <h4>Tools</h4>
+                    <p>VS Code, Git, GitHub, Figma, Postman</p>
+                </div>
+                <div class="skill-item">
+                    <h4>Soft Skills</h4>
+                    <p>Problem Solving, Teamwork, Critical Thinking, Time Management</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Alya Ghaitsa Salsabila. Crafted with ✨</p>
+    </footer>
+
+</body>
+</html>
