@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alya Ghaitsa Salsabila | Personal Branding</title>
+    <title>Alya Ghaitsa Salsabila | Portfolio</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
@@ -15,6 +15,8 @@
             --text-primary: #ffffff;
             --text-secondary: #a0a0a0;
             --glass: rgba(255, 255, 255, 0.05);
+            /* This samples a green from the image edge for a seamless background */
+            --project-tree-bg: #0c3e2e; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -47,6 +49,7 @@
         .nav-menu a { color: var(--text-secondary); font-size: 1.2rem; transition: 0.3s; text-decoration: none; }
         .nav-menu a:hover { color: var(--accent-color); transform: scale(1.2); }
 
+        /* Konten Utama */
         .content { margin-left: 80px; padding: 0 5%; }
 
         section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 80px 0; }
@@ -83,6 +86,7 @@
             100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
         }
 
+        /* Judul Section */
         .title { font-size: 2.5rem; margin-bottom: 3rem; position: relative; font-weight: 800; }
         .title::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 60px; height: 4px; background: var(--accent-color); }
 
@@ -101,10 +105,23 @@
             justify-content: flex-end; transition: 0.4s; cursor: pointer;
             position: relative; overflow: hidden;
         }
+
+        /* Special fixes for the Project TREE box */
+        .project-tree-box {
+            /* Now background fits inside without cutting, and seamless green color fills the gaps */
+            background-image: url('foto/tree.png');
+            background-size: contain; 
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: var(--project-tree-bg);
+            /* Add a subtle inset shadow to make the image stand out slightly within the box */
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.5); 
+        }
+
         .bento-content { position: relative; z-index: 2; }
         .bento-content span { font-size: 0.8rem; color: var(--accent-color); font-weight: 600; text-transform: uppercase; }
         .bento-box:hover { border-color: var(--accent-color); transform: translateY(-5px); }
-        .large { grid-row: span 2; background: linear-gradient(45deg, #1a1a1d, #0b0b0d); }
+        .large { grid-row: span 2; }
 
         /* Skill Chips */
         .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
@@ -184,12 +201,12 @@
         <section id="projects">
             <h2 class="title">Proyek Pilihan</h2>
             <div class="project-bento">
-                <div class="bento-box large">
+                <div class="bento-box large project-tree-box">
                     <div class="bento-content">
                         <span>PBL Project - Semester 1</span>
-                        <h3>TREE</h3>
+                        <h3>Project TREE</h3>
                         <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 10px; line-height: 1.5;">
-                            Technology Ronda Efektif dan Efisien (TREE) adalah aplikasi pengelolaan keamanan lingkungan. Aplikasi ini memudahkan penjadwalan ronda otomatis, pembagian tugas yang adil, serta pelaporan kejadian digital agar lebih terorganisir.
+                            Technology Ronda Efektif dan Efisien (TREE) membantu pengelolaan keamanan lingkungan lewat penjadwalan otomatis dan pelaporan kejadian digital yang terorganisir.
                         </p>
                     </div>
                 </div>
@@ -197,7 +214,7 @@
                     <div class="bento-content">
                         <span>Development</span>
                         <h3>Personal Branding</h3>
-                        <p style="font-size: 0.75rem; color: var(--text-secondary);">Web portfolio responsif menggunakan HTML & CSS.</p>
+                        <p style="font-size: 0.75rem; color: var(--text-secondary);">Web portfolio responsif HTML & CSS.</p>
                     </div>
                 </div>
                 <div class="bento-box">
